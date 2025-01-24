@@ -54,7 +54,7 @@ We'll compare the running times of `linear_search` and `binary_search` empirical
 
 **TODO: add your timing results here**
 
-- [ ] 9. The theoretical worst-case running time of linear search is $O(n)$ and binary search is $O(log_2(n))$. Do these theoretical running times match your empirical results? Why or why not?
+- [ ] 9. The theoretical worst-case running time of linear search is $O(n)$ and binary search is *O(log_2(n))*. Do these theoretical running times match your empirical results? Why or why not?
 
 **TODO: your answer goes here**
 
