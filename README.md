@@ -1,7 +1,7 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/tqM-lrvp)
 # CMPS 2200  Recitation 01
 
-**Name:** Jamari Ross  
+**Name:** Jamari Ross
 
 In this recitation, we will investigate asymptotic complexity. Additionally, we will get familiar with the various technologies we'll use for collaborative coding.
 
@@ -9,7 +9,7 @@ To complete this recitation, follow the instructions in this document. Some of y
 
 ## Install Python Dependency
 
-We need Python library of "tabulate" to visualize the results in a good shape. Please install it by running 'pip install tabulate' or 'pip install -r requirements.txt' in Shell Tab of Repl.  
+We need Python library of "tabulate" to visualize the results in a good shape. Please install it by running 'pip install tabulate' or 'pip install -r requirements.txt' in Shell Tab of Repl.
 
 ## Running and testing your code
 
@@ -31,26 +31,25 @@ We'll compare the running times of `linear_search` and `binary_search` empirical
 
 `Binary Search`: Search a sorted array by repeatedly dividing the search interval in half. Begin with an interval covering the whole array. If the value of the search key is less than the item in the middle of the interval, narrow the interval to the lower half. Otherwise, narrow it to the upper half. Repeatedly check until the value is found or the interval is empty.
 
-- [X] 1. In `main.py`, the implementation of `linear_search` is already complete. Your task is to implement `binary_search`. Implement a recursive solution using the helper function `_binary_search`. 
+- [X] 1. In `main.py`, the implementation of `linear_search` is already complete. Your task is to implement `binary_search`. Implement a recursive solution using the helper function `_binary_search`.
 
 - [X] 2. Test that your function is correct by calling from the command-line `pytest test_main.py::test_binary_search`
 
 - [X] 3. Write at least two additional test cases in `test_binary_search` and confirm they pass.
 
-- [X] 4. Describe the worst case input value of `key` for `linear_search`? for `binary_search`? 
+- [X] 4. Describe the worst case input value of `key` for `linear_search`? for `binary_search`?
 
 **TODO: your answer goes here**
-The worst case input/key for linear search is n or the size of the array, and occurs when the key being searched for does not exist within the array being searched. For example, a worst case key for the lists in test_main.py would be -1.
+The worst-case input value for linear_search would be the last value in the list, or a value not in the list. Working with the same list in test_main.py, this would mean the worst-case input key would be 5 or -1, as 5 is the last value in the list, and -1 is not in the list.
 
-For binary search, a worst case key would be something like 8, which is not in the array. This would cause the max number of 4 comparisons before the programs starts returning after failing to find a value. 
+For binary search (in my example), the worst-case is the second or last value, or a value not in the list. This would mean the worst-case key would be 2, 5, or -1. 2 and 5 are the second and last values in the array respectively, and -1 is not in the list.
 
 
 
-- [X] 5. Describe the best case input value of `key` for `linear_search`? for `binary_search`? 
+- [X] 5. Describe the best case input value of `key` for `linear_search`? for `binary_search`?
 
 **TODO: your answer goes here**
 The best case key for linear search would be 1, and the best case key for binary search would be 3. This is because these keys are the values in the first indexes that are checked by their respective algorithms.
-
 
 
 - [X] 6. Complete the `time_search` function to compute the running time of a search function. Note that this is an example of a "higher order" function, since one of its parameters is another function.
@@ -70,14 +69,21 @@ The best case key for linear search would be 1, and the best case key for binary
 |  1000000.000 |   53.000 |    0.000 |
 | 10000000.000 |  503.000 |    0.000 |
 
-- [ ] 9. The theoretical worst-case running time of linear search is $O(n)$ and binary search is $O(log_2(n))$. Do these theoretical running times match your empirical results? Why or why not?
+- [X] 9. The theoretical worst-case running time of linear search is $O(n)$ and binary search is $O(log_2(n))$. Do these theoretical running times match your empirical results? Why or why not?
 
 **TODO: your answer goes here**
+My compare_search results do match the theoretical running times that are expected from linear and binary search. I believe this is because the worst-case time complexity of binary search ($O(log_2(n))$) will always run faster than the worst-case time complexity of linear search ($O(n)$).
 
-- [ ] 10. Binary search assumes the input list is already sorted. Assume it takes $\Theta(n^2)$ time to sort a list of length $n$. Suppose you know ahead of time that you will search the same list $k$ times. 
+- [X] 10. Binary search assumes the input list is already sorted. Assume it takes $\Theta(n^2)$ time to sort a list of length $n$. Suppose you know ahead of time that you will search the same list $k$ times.
   + What is worst-case complexity of searching a list of $n$ elements $k$ times using linear search?
       + **TODO: your answer goes here**
+      The worst-case time complexity would be $O(n*k)$, because the loop is ran $k$ times.
+
   + For binary search?
       + **TODO: your answer goes here**
+      The worst-case time complexity would be $O((n^2 + log_2(n)) * k)$.
+      If it is assumed that the list will be sorted each time, then its time cost would be $n^2$, which is added to the search time cost of $log_2(n)$. This is all multiplied by $k$ because it is ran $k$ times.
+
   + For what values of $k$ is it more efficient to first sort and then use binary search versus just using linear search without sorting?
       + **TODO: your answer goes here**
+      It's more efficient to use linear search for all values of $k$, because the added time cost of sorting for binary search causes the time complexity to be significantly greater than that of linear search.
